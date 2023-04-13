@@ -1,0 +1,24 @@
+<% provide(:title, "Home") %>
+
+<div class="jumbotron">
+
+  <% if logged_in? %>
+    <h1 class="mb0">Welcome to The Golf Handicapper</h1>
+      <p class="alert">You are already logged in!</p>
+        <div class="pb20">
+          <%= link_to "Go to profile", current_user, class: "btn btn-lg btn-primary" %>
+        </div>
+  <% else %>
+    <h1>Welcome to The Golf Handicapper</h1>
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"  %>
+      <p> Already have an account?
+        <%= link_to "Login now!", login_path %>
+      </p>
+  <% end %>
+
+</div>
+
+<div class="tac">
+  <%= link_to image_tag("golf-background2.jpg", alt: "The Golf Handicapper logo"),
+            'https://the-golf-handicapper.herokuapp.com/' %>
+</div>

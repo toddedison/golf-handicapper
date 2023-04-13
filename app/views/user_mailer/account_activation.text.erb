@@ -1,0 +1,5 @@
+Hello <%= @user.name %>,
+
+Welcome to The Golf Handicapper! Click on the link below to activate your account (or paste into a browser):
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

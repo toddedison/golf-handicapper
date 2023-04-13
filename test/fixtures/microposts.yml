@@ -1,0 +1,48 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course: MyString
+  game_date: MyString
+  rating: 9.99
+  slope: 1
+  score: 1
+  handicap: 9.99
+  user: todd
+  created_at: <%= 10.minutes.ago %>
+
+two:
+  course: MyString
+  game_date: MyString
+  rating: 9.99
+  slope: 1
+  score: 1
+  handicap: 9.99
+  user: todd
+  created_at: <%= 3.years.ago %>
+
+three:
+  course: MyString
+  game_date: MyString
+  rating: 9.99
+  slope: 1
+  score: 1
+  handicap: 9.99
+  user: three
+  created_at: <%= 10.years.ago %>
+
+most_recent:
+  course: MyString
+  game_date: MyString
+  rating: 9.99
+  slope: 1
+  score: 1
+  handicap: 9.99
+  user: most_recent
+  created_at: <%= Time.zone.now %>
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  course: <%= Faker::Lorem.words(2) %>
+  created_at: <%= 42.days.ago %>
+  user: todd
+<% end %>

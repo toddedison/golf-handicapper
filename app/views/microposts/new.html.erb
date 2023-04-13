@@ -1,0 +1,11 @@
+<% provide(:title, 'Record New Round') %>
+<% provide(:button_text, 'Save Round') %>
+<h1>Record New Round</h1>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= render 'new_round_form', micropost: @micropost %>
+    <p class="tac mt20"><%= link_to 'Back', current_user, class: "btn btn-sm btn-secondary"  %></p>
+  </div>
+
+</div>

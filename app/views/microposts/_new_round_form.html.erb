@@ -1,0 +1,36 @@
+<%= form_for(micropost) do |f| %>
+  <% if micropost.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% micropost.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label :course %>
+    <%= f.text_field :course, class: 'form-control', placeholder: 'Augusta National' %>
+
+    <%= f.label "Date" %>
+    <%= f.text_field :game_date, class: 'form-control', 'data-behavior' => 'datepicker', placeholder: 'mm/dd/yyyy' %>
+
+    <%= f.label :slope %>
+    <%= f.text_field :slope, class: 'form-control', type: 'number', min: '55', max: '155', :maxlength => 3, placeholder: 'e.g. 55-155' %>
+
+    <%= f.label :rating %>
+    <%= f.number_field :rating, class: 'form-control', :in => 68..78, :step => 0.1, placeholder: 'e.g. 68-78' %>
+
+    <%= f.label :score %>
+    <%= f.text_field :score, class: 'form-control', type: 'number', min: '59', max: '130', :maxlength => 3, placeholder: 'e.g. 100' %>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+
+<% end %>
+
+
+<script type="text/javascript">
+  $('[data-behavior~=datepicker]').datepicker({
+     orientation: 'bottom'
+  });
+</script>

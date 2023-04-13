@@ -1,0 +1,62 @@
+<% provide(:title, @user.name) %>
+
+<div class="picture-div">
+  <h1>
+    <%= picture_for @user if @user.picture? %>
+    <%= @user.name %>
+  </h1>
+</div>
+
+<div class="exhibit">
+  <h2>Score Card</h2>
+  <div class="container-special">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Date</th>
+          <th>Slope</th>
+          <th>Rating</th>
+          <th>Score</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.microposts.each do |micropost| %>
+        <tr>
+          <td><%= micropost.course %></td>
+          <td><%= micropost.game_date %></td>
+          <td><%= micropost.slope %></td>
+          <td><%= micropost.rating %></td>
+          <td><%= micropost.score %></td>
+          <td><%= link_to 'Delete', micropost, method: :delete, data: { confirm: 'Are you sure you want to delete this round?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tac mb10">
+    <%= link_to "Record a New Round", new_micropost_path, class: "btn btn-primary"  %>
+  </div>
+
+  <div class="handicap-style">
+
+    <% if (@user.microposts.count < 5) %>
+      <% if (@user.microposts.count == 1 || @user.microposts.count == 3 || @user.microposts.count == 4) %>
+        <% flash.now[:danger] = "An official handicap requires a minimum of 5 rounds of golf!" %>
+      <% end %>
+      <h3>Your unofficial handicap is: </h3>
+    <% else %>
+      <h3>Your official handicap is: </h3>
+    <% end %>
+
+    <span class="handicap-score"><%= @user.handicap %></span>
+  </div>
+</div>
+
+<% if (@user.microposts.count >= 5) %>
+  <div class="tac mt40 mb10">
+    <%= link_to "Printable Scorecard (PDF)", user_path(@user, format: "pdf") %>
+  </div>
+<% end %>
